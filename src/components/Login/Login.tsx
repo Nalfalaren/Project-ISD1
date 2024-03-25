@@ -17,7 +17,7 @@ const Login = () => {
   const submitForm = async (data : IUserInfo) => {
     console.log(data);
     try{
-    const response = await fetch('http://localhost:8686/register', {
+    const response = await fetch('http://localhost:8686/login', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
