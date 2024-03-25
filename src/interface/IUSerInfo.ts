@@ -9,7 +9,7 @@ export interface IUserSignUp{
     phone_number: string,
     password: string,
     gender: string,
-    role_id: number,
+    // role_id: number,
 }
 
 export interface INewPassword{

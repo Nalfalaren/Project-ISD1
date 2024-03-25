@@ -8,13 +8,28 @@ import { ThemeContext } from '../../context/ClickTheme.tsx';
 import VisibilityIcon from '@mui/icons-material/Visibility';
 import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
 import schema from '../../validation/SignInVal.ts';
+import { useNavigate } from 'react-router-dom';
 const Login = () => {
   const click = useContext(ThemeContext)
-
+  const navigate = useNavigate();
   const { register, handleSubmit, formState: { errors } } = useForm<IUserInfo>({resolver: zodResolver(schema)})
 
-  const submitForm = (data : IUserInfo) => {
+  const submitForm = async (data : IUserInfo) => {
     console.log(data);
+    try{
+    const response = await fetch('http://localhost:8686/register', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(data)
+    })
+    const userLogIn = await response.json();
+    console.log("Server response:", userLogIn);
+    navigate('/')
+    }catch(error){
+      console.error(error);
+    }
   }
   
   return (

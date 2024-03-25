@@ -8,19 +8,9 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import SuccessfulMessage from './SuccessfulMessage.tsx';
 import VisibilityIcon from '@mui/icons-material/Visibility';
 import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
-import {z } from 'zod';
 import schema from '../../validation/SignUpVal.ts';
 const Signup = () => {
   const click = useContext(ThemeContext);
-
-  const schema: z.ZodType<IUserSignUp> = z.object({
-    userFullName: z.string().min(1, { message: 'Tên không được để trống!' }).max(100, { message: 'Tên không được vượt quá 100 kí tự' }),
-    email: z.string().email({ message: "Vui lòng nhập địa chỉ email hợp lệ" }),
-    gender: z.string().min(1, { message: "Vui lòng nhập giới tính!" }),
-    phoneNumber: z.string().min(1, { message: 'Số điện thoại không hợp lệ!' }),
-    password: z.string().min(8, { message: 'Mật khẩu phải trên 8 kí tự' }).max(200, { message: 'Mật khẩu quá 200 kí tự' }),
-    confirmPassword: z.string().min(8, { message: 'Mật khẩu phải trên 8 kí tự' }).max(200, { message: 'Mật khẩu quá 200 kí tự' }),
-  })
 
   const { register, handleSubmit, formState: {errors, isSubmitting} } = useForm<IUserSignUp>({resolver: zodResolver(schema)})
 
