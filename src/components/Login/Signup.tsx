@@ -14,7 +14,7 @@ const Signup = () => {
 
   const { register, handleSubmit, formState: {errors, isSubmitting} } = useForm<IUserSignUp>({resolver: zodResolver(schema)})
 
-  const onInvalid = (errors: any) => console.error(errors)
+    
   const onSubmit = async (data : IUserSignUp) => {
     try {
       console.log("Form submitted with data:", data);
@@ -42,8 +42,8 @@ const Signup = () => {
       <Container>
         <Paper elevation={3} className='md:px-[30px] md:py-[20px] md:w-[600px] w-8/10 py-[10px] px-[15px] absolute top-1/2 left-1/2 transform -translate-x-[50%] -translate-y-[50%] md:mt-0 mt-[200px]'>
           <h1 className='sm:text-3xl font-bold pb-8 text-2xl text-center'>Đăng ký</h1>
-          <form onSubmit={handleSubmit(onSubmit, onInvalid)} >
-            <div className='flex flex-col justify-center align-center gap-[10px] text-lg'>
+          <form onSubmit={handleSubmit(onSubmit)} >
+            <div className='flex md:flex-row flex-col justify-center align-center md:gap-[50px] gap-[10px] text-lg'>
               <div className='flex flex-col justify-center align-center gap-[10px] text-lg'>
                 <label htmlFor='Họ và tên' className='text-lg'>Họ và tên *</label>
                 <TextField className='bg-login_input ' id="outlined-basic" placeholder='Họ của bạn' variant="outlined" type='text' {...register('full_name', { required: `${errors.full_name}` })} />
@@ -72,7 +72,12 @@ const Signup = () => {
                   {click.clickVisibleSignUp ? <VisibilityIcon onClick={click.handleVisibleSignUp} className='absolute right-3 bottom-4'></VisibilityIcon> : <VisibilityOffIcon onClick={click.handleVisibleSignUp} className='absolute right-3 bottom-4'></VisibilityOffIcon>}
                 </div>
                 {errors.password && <span className='text-red-500 font-bold text-xs'>{errors.password.message}</span>}
-                
+                <label htmlFor='Xác nhận mật khẩu'>Xác nhận mật khẩu *</label>
+                <div className='relative'>
+                  <TextField className='bg-login_input w-full' id="filled-basic-cf" placeholder="Xác nhận Mật khẩu" variant="outlined" type={click.clickVisiblePasswordConfirm ? 'text' : 'password'} {...register('password')} />
+                  {click.clickVisiblePasswordConfirm ? <VisibilityIcon onClick={click.handleClickVisiblePasswordConfirm} className='absolute right-3 bottom-4'></VisibilityIcon> : <VisibilityOffIcon onClick={click.handleClickVisiblePasswordConfirm} className='absolute right-3 bottom-4'></VisibilityOffIcon>}
+                </div>
+                {errors.password && <span className='text-red-500 font-bold text-xs'>{errors.password.message}</span>}
             </div>
             </div> 
             <div className='flex flex-col justify-between mx-8 mt-8 gap-[10px]'>

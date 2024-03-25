@@ -15,7 +15,6 @@ const Login = () => {
   const { register, handleSubmit, formState: { errors } } = useForm<IUserInfo>({resolver: zodResolver(schema)})
 
   const submitForm = async (data : IUserInfo) => {
-    console.log(data);
     try{
     const response = await fetch('http://localhost:8686/login', {
       method: 'POST',
@@ -26,7 +25,7 @@ const Login = () => {
     })
     const userLogIn = await response.json();
     console.log("Server response:", userLogIn);
-    navigate('/')
+    navigate('/');
     }catch(error){
       console.error(error);
     }
@@ -39,11 +38,11 @@ const Login = () => {
           <h1 className='sm:text-3xl font-bold pb-8 text-2xl '>Đăng nhập</h1>
           <form className='flex flex-col justify-center align-center gap-[20px] text-lg' onSubmit={handleSubmit(submitForm)}>
             <label htmlFor='account' className='text-lg'>Số điện thoại hoặc địa chỉ email *</label>
-            <TextField className='bg-login_input' id="outlined-basic" label="Tài khoản" variant="outlined" type='text' {...register("email")}/>
-            {errors.email && <span className='text-red-500 font-bold'>{errors.email.message}</span>}
+            <TextField className='bg-login_input' id="outlined-basic" variant="outlined" type='text' {...register("username")}/>
+            {errors.username && <span className='text-red-500 font-bold'>{errors.username.message}</span>}
             <label htmlFor='password' className=''>Mật khẩu *</label>
             <div className='relative'>
-            <TextField className='bg-login_input w-full' id="filled-basic" label="Password" variant="outlined" type={click.isClicked ? 'text' : 'password'} {...register("password")}/>
+            <TextField className='bg-login_input w-full' id="filled-basic" variant="outlined" type={click.isClicked ? 'text' : 'password'} {...register("password")}/>
             {click.isClicked ? <VisibilityIcon onClick={click.handleClick} className='absolute right-3 bottom-4'></VisibilityIcon> : <VisibilityOffIcon className='absolute right-3 bottom-4' onClick={click.handleClick}></VisibilityOffIcon>}
             </div>
             {errors.password && <span className='text-red-500 font-bold'>{errors.password.message}</span>}
@@ -58,7 +57,6 @@ const Login = () => {
           </div>
         </Paper>
       </Container>
-      {}
     </div>
   )
 }
