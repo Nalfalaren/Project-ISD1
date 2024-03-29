@@ -16,8 +16,7 @@ const Signup = () => {
 
     
   const onSubmit = async (data : IUserSignUp) => {
-    try {
- 
+    try { 
       const { confirm_password, ...formData } = data;
       console.log("Form submitted with data:", formData);
       formData.role_id = 4;

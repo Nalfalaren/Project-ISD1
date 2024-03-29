@@ -5,6 +5,7 @@ import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { Link } from 'react-router-dom';
 import { ThemeContext } from '../../../context/ClickTheme.tsx';
+import { LoginResponse } from '../../../interface/IUSerInfo';
 import VisibilityIcon from '@mui/icons-material/Visibility';
 import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
 import schema from '../../../validation/SignInVal.ts';
@@ -27,6 +28,9 @@ const Login = () => {
     })
     const userLogIn = await response.json();
     console.log("Server response:", userLogIn);
+    const token: LoginResponse = await response.json();
+
+    localStorage.setItem('token', token.token);
     navigate('/');
     }catch(error){
       console.error(error);
