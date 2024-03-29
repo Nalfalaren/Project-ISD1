@@ -13,10 +13,10 @@ const NavMain = () => {
 
   return (
     <>
-      <div className={`${clickBar.barClick ? "inset-0 bg-black bg-opacity-50 z-10 flex" : ""}`}>
-        <div className={`md:bg-[#6C5070] bg-white shadow-shadow_primary md:w-full md:w-full w-[260px] z-10 ${clickBar.barClick ? "" : "md:block hidden"}`}>
+      <div className={`${clickBar.barClick ? "fixed inset-0 bg-black bg-opacity-50 z-10 flex" : ""}`}>
+        <div className={` md:bg-[#6C5070] bg-white shadow-shadow_primary md:w-full md:w-full w-[260px] relative ${clickBar.barClick ? "" : "md:block hidden"}`}>
           <ul className="box-border 2xl:flex 2xl:flex-row 2xl:justify-between 2xl:gap-[20px] md:grid md:grid-cols-smallGrid md:justify-center md:items-center flex flex-col gap-x-[40px] gap-y-[30px] md:w-full ">
-            <li className="flex flex-row hover:bg-orange-900 md:p-4 md:gap-[5px] " >
+            <li className="flex flex-row hover:bg-orange-900 md:p-4 md:gap-[5px]  " >
               <div className="md:text-white md:flex md:justify-between md:items-center md:font-bold md:block hidden">
                 <MenuIcon className="md:hidden block" onClick={clickBar.handleBarClick}></MenuIcon>
                 <span className="md:text-sm">DANH MỤC SẢN PHẨM</span>

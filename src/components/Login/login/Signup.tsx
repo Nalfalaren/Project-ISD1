@@ -18,8 +18,9 @@ const Signup = () => {
   const onSubmit = async (data : IUserSignUp) => {
     try { 
       const { confirm_password, ...formData } = data;
+      console.log(data);
       console.log("Form submitted with data:", formData);
-      formData.role_id = 4;
+      formData.role = "CUSTOMER";
   
       const response : any = await fetch('http://localhost:8686/register', {
         method: 'POST',
@@ -42,8 +43,6 @@ const Signup = () => {
     }
   };
   
-  
-   
   return (
     <div>
     <Container>
@@ -68,9 +67,9 @@ const Signup = () => {
               <label htmlFor='Giới tính'> Giới tính *</label>
               <select className='bg-login_input p-4 border border-0 border-solid border-login_input hover:border-gray' {...register('gender')}>
                 <option selected disabled value="">Giới tính</option>
-                <option value="Nam">Nam</option>
-                <option value="Nữ">Nữ</option>
-                <option value="Khác">Khác</option>
+                <option value="male">Nam</option>
+                <option value="female">Nữ</option>
+                <option value="other">Khác</option>
               </select>
               {errors.gender && <span className='text-red-500 font-bold text-xs'>{errors.gender.message}</span>}
               <label htmlFor='Mật khẩu'>Mật khẩu *</label>
@@ -89,7 +88,7 @@ const Signup = () => {
           </div>
           <div className='flex flex-col justify-between mx-8 mt-8 gap-[10px]'>
             <Button type="submit" variant="contained" className='w-full' style={{ backgroundColor: '#9A917A' }} disabled={isSubmitting}>Đăng ký</Button>
-            <Link to="/login" className='p-1 text-f_pw underline w-full text-center'>Đã có tài khoản?</Link>
+            <Link to="/login" className=' p-1 text-f_pw underline text-center w-3/10 mx-auto'>Đã có tài khoản?</Link>
           </div>
         </form>
       </Paper>

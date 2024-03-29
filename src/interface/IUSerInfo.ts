@@ -1,7 +1,7 @@
 export interface IUserInfo{
     username : string,
     password: string,
-    roleID: number,
+    role: string,
 }
 
 export interface IUserSignUp {
@@ -11,7 +11,7 @@ export interface IUserSignUp {
     confirm_password: string,
     password: string,
     gender: string,
-    role_id: number
+    role: string,
   }
   
 
@@ -22,6 +22,6 @@ export interface INewPassword{
 
 export interface LoginResponse {
     token: string;
-    role_id: number;
+    role: string;
     full_name: string;
   }

@@ -11,21 +11,14 @@ const NavCover = () => {
 
   useEffect(() => {
     const fetchUserInfo = async () => {
-      try{
-      const response = await fetch('localhost:8686/register');
-      const data = await response.json();
-      if(data){
-        setIsActive(data);
-        
-      }
-      }catch(error){
-        console.error(error);
-      }
+        const token = localStorage.getItem('token');
+        // do sth
     }
     fetchUserInfo();
   }, []);
 
   const handleLogout = () => {
+    localStorage.removeItem('token');
     setIsActive(null);
   }
   return (
@@ -38,7 +31,7 @@ const NavCover = () => {
             <li className='text-white'>Liên hệ</li>
             <li className='text-white'>Bản đồ đến shop</li>
             <li className='text-white'>Tuyển dụng</li>
-            <li className='text-white'>{isActive ? <div>Xin chào<span>{isActive.full_name}</span><span onClick={handleLogout}>Log out</span></div> : <Link to='/login'>Đăng nhập/Đăng ký</Link>}</li>
+            <li className='text-white'>{isActive ? <div>Xin chào<span>{isActive.full_name}</span><span onClick={handleLogout}>Đăng xuất</span></div> : <div className='flex flex-row gap-[10px]'><Link to='/login'>Đăng nhập</Link><Link to='/sign_up'>Đăng ký</Link></div>}</li>
           </ul>
         </div>
         <div className='md:text-white md:block hidden'>

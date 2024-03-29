@@ -16,6 +16,7 @@ const Login = () => {
   const { register, handleSubmit, formState: { errors } } = useForm<IUserInfo>({resolver: zodResolver(schema)})
 
   const submitForm = async (data : IUserInfo) => {
+    data.role = "CUSTOMER"
     console.log(data);
     
     try{
