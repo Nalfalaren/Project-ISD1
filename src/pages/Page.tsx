@@ -1,8 +1,9 @@
 import React from 'react'
-import Login from '../components/Login/Login.tsx'
+import Login from '../components/Login/login/Login.tsx'
+import Signup from '../components/Login/login/Signup.tsx'
+import ForgetPassword from '../components/Login/login/ForgetPassword.tsx'
+import Homepage from '../components/Homepage/Homepage.tsx'
 import {Routes, Route} from 'react-router-dom'
-import Signup from '../components/Login/Signup.tsx'
-import ForgetPassword from '../components/Login/ForgetPassword.tsx'
 const Page = () => {
   return (
     <div>
@@ -10,6 +11,7 @@ const Page = () => {
         <Route path='/login' element={<Login></Login>}></Route>
         <Route path='/sign_up' element={<Signup></Signup>}></Route>
         <Route path='/forgot-password' element={<ForgetPassword></ForgetPassword>}></Route>
+        <Route path='/' element={<Homepage></Homepage>}></Route>
     </Routes>    
     </div>
   )

@@ -1,5 +1,5 @@
-import React, { useContext } from 'react';
-import { OverlayProps } from '../../interface/Overlay';
+import React from 'react';
+import { OverlayProps } from '../../../interface/Overlay';
 
 const Overlay: React.FC<OverlayProps> = ({ children }) => {
   return (

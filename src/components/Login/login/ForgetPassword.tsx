@@ -4,11 +4,11 @@ import { useRef } from 'react'
 import { Container, Card, TextField, Button } from '@mui/material'
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
-import { ThemeContext } from '../../context/ClickTheme.tsx'
+import { ThemeContext } from '../../../context/ClickTheme.tsx'
 import SuccessfulMessage from './SuccessfulMessage.tsx'
-import { INewPassword } from '../../interface/IUSerInfo.ts'
-import { submitForgetPassword } from '../../composables/submitForgetPassword.ts'
-import schema from '../../validation/ForgetPwVal.ts';
+import { INewPassword } from '../../../interface/IUSerInfo.ts'
+import { submitForgetPassword } from '../../../composables/submitForgetPassword.ts'
+import schema from '../../../validation/ForgetPwVal.ts';
 
 const ForgetPassword = () => {
   const theme = useContext(ThemeContext)

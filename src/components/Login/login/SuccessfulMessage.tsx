@@ -1,9 +1,9 @@
 import React, { useContext } from 'react'
-import V from '../../assets/v-mark.gif';
+import V from '../../../assets/v-mark.gif';
 import { Button } from '@mui/material'
 import { useNavigate } from 'react-router-dom'
 import Overlay from './Overlay.tsx'
-import { ThemeContext } from '../../context/ClickTheme.tsx'
+import { ThemeContext } from '../../../context/ClickTheme.tsx';
 const SuccessfulMessage = () => {
   const theme = useContext(ThemeContext)
     const navigate = useNavigate();

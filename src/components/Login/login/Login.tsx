@@ -1,13 +1,13 @@
 import { Paper, Container, TextField, Button, Icon } from '@mui/material';
 import React, { useContext } from 'react';
-import { IUserInfo } from '../../interface/IUSerInfo';
+import { IUserInfo } from '../../../interface/IUSerInfo';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { Link } from 'react-router-dom';
-import { ThemeContext } from '../../context/ClickTheme.tsx';
+import { ThemeContext } from '../../../context/ClickTheme.tsx';
 import VisibilityIcon from '@mui/icons-material/Visibility';
 import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
-import schema from '../../validation/SignInVal.ts';
+import schema from '../../../validation/SignInVal.ts';
 import { useNavigate } from 'react-router-dom';
 const Login = () => {
   const click = useContext(ThemeContext)
@@ -15,6 +15,8 @@ const Login = () => {
   const { register, handleSubmit, formState: { errors } } = useForm<IUserInfo>({resolver: zodResolver(schema)})
 
   const submitForm = async (data : IUserInfo) => {
+    console.log(data);
+    
     try{
     const response = await fetch('http://localhost:8686/login', {
       method: 'POST',

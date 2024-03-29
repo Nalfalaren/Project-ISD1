@@ -3,14 +3,16 @@ export interface IUserInfo{
     password: string
 }
 
-export interface IUserSignUp{
+export interface IUserSignUp {
     full_name: string,
     email: string,
     phone_number: string,
+    confirm_password: string,
     password: string,
     gender: string,
-    // role_id: number,
-}
+    role_id: number
+  }
+  
 
 export interface INewPassword{
     account: string,
