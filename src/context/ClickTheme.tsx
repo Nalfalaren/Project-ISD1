@@ -5,10 +5,13 @@ const ThemeContext = createContext({
  clickSignUp: false,
  clickVisibleSignUp: false,
  clickVisiblePasswordConfirm: false,
+ loginType: 'account',
  handleClick: () => {},
  handleClickSignUp: () => {},
  handleVisibleSignUp: () => {},
  handleClickVisiblePasswordConfirm: () => {},
+ handleLoginAccount: () => {},
+ handleLoginPhoneNumber: () => {},
 });
 
 const ClickTheme = ({ children }) => {
@@ -16,6 +19,7 @@ const ClickTheme = ({ children }) => {
  const [clickSignUp, setclickSignUp] = useState(false);
  const [clickVisibleSignUp, setVisibleSignUp] = useState(false);
  const [clickVisiblePasswordConfirm, setClickVisiblePasswordConfirm] = useState(false);
+ const [loginType, setLoginType] = useState('');
  const handleClick = () => {
     setIsClicked(prevState => !prevState);
  };
@@ -28,8 +32,14 @@ const handleVisibleSignUp = () => {
 const handleClickVisiblePasswordConfirm = () => {
    setClickVisiblePasswordConfirm(state => !state);
 }
+const handleLoginAccount = () => {
+   setLoginType('account')
+}
 
- const value = {clickVisiblePasswordConfirm, clickVisibleSignUp, isClicked, clickSignUp, handleClick, handleClickSignUp, handleVisibleSignUp, handleClickVisiblePasswordConfirm };
+const handleLoginPhoneNumber = () => {
+   setLoginType('phoneNumber')
+}
+ const value = {clickVisiblePasswordConfirm, clickVisibleSignUp, isClicked, clickSignUp, handleClick, handleClickSignUp, handleVisibleSignUp, handleClickVisiblePasswordConfirm, loginType, handleLoginAccount, handleLoginPhoneNumber};
 
  return (
     <ThemeContext.Provider value={value}>

@@ -6,7 +6,7 @@ const Feedback = () => {
   return (
     <div>
       <div className="mx-auto my-[50px] text-center">
-        <span className="text-[#555868] border-2 border-solid border-[#D4CFCF] p-2 text-3xl font-bold">
+        <span className="text-[#555868] p-2 text-3xl font-bold">
           Đánh Giá Từ Khách Hàng
         </span>
       </div>
